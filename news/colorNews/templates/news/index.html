@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{title}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}">Новости</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Категории</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Добавить новость</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Добавить категорию</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled">Disabled</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+
+      <div class="container">
+            <h1>{{title}}</h1>
+            <div class="row">
+              <div>
+                <p>
+                  <a>Типы новостей</a>
+                </p>
+              </div>
+                <div">
+                {% for type in types %}
+                    <a href="{% url 'type' type.pk %}", style="border: 1px solid black;
+                    padding: 5px; border-radius: 30px; text-decoration:none; color: black;">{{type.title}}</a>
+                {% endfor %}
+                </div>
+                <div style="margin-top: 20px;">
+                  <p>
+                    <a>Цвет новостей</a>
+                  </p>
+                </div>
+                <div style="margin-top: 20px">
+                {% for type in types %}
+                    <a href="{% url 'type' type.pk %}", style="border: 1px solid black;
+                    padding: 5px; border-radius: 30px; text-decoration:none; color: black;">{{type.color}}</a>
+                {% endfor %}
+                </div>
+
+                <div class="col-md-12", style="margin-top:15px">
+                {% for item in news %}
+                <div class="card mb-3" style="width: 54rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">{{item.title}}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">{{item.shortDescription}}</h6>
+                      <p class="card-text">{{item.fullDescription}}</p>
+                      <a class="card-link" style="text-decoration: none; color: black;">{{item.newsType}}</a>
+                    </div>
+                  </div>
+                {% endfor %}
+            </div>
+            </div>
+      </div>
+</body>
+</html>

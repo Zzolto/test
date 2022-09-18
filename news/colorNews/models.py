@@ -12,7 +12,6 @@ class News(models.Model):
     fullDescription = models.TextField(blank=True, verbose_name='Описание')
     newsType = models.ForeignKey('Type', on_delete= models.PROTECT, verbose_name='Тип')
 
-
     def __str__(self):
         return self.title
 
@@ -22,6 +21,7 @@ class News(models.Model):
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural='Новости'
+
 
 class Type(models.Model):
     title = models.CharField(max_length=150, db_index=True, verbose_name='Тип новости', blank=True)
